@@ -24,13 +24,13 @@
 	</ItemGroup>
 
 	<PropertyGroup>
-		<PackageId>ICG.AspNetCore.Utilities.BootstrapTagHelpers</PackageId>
-		<Title>AspNetCore Utilities Bootstrap TagHelpers</Title>
-		<Description>A collection of TagHelpers making Bootstrap utilization easier for AspNetCore Projects.</Description>
+		<PackageId>ICG.AspNetCore.Utilities.UnitTesting.TagHelpers</PackageId>
+		<Title>AspNetCore TagHelper Unit Testing Utilities</Title>
+		<Description>Helper methods and utilities to make unit testing tag helpers easier</Description>
 		<Copyright>Copyright 2022, IowaComputerGurus, Subject to the MIT License</Copyright>
-		<PackageProjectUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.bootstraptaghelpers</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.unittesting.taghelpers</PackageProjectUrl>
 		<PackageTags>aspnetcore;utility;bootstrap;ui</PackageTags>
-		<RepositoryUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.bootstraptaghelpers</RepositoryUrl>
+		<RepositoryUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.unittesting.taghelpers</RepositoryUrl>
 		<Authors>MitchelSellers;IowaComputerGurus</Authors>
 		<Owners>IowaComputerGurus</Owners>
 		<PackageIcon>icgAppIcon.png</PackageIcon>
