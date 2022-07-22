@@ -1,6 +1,7 @@
 ﻿#nullable enable
 using AngleSharp.Dom;
 using AngleSharp.Html;
+using AngleSharp.Html.Parser;
 using ICG.AspNetCore.Utilities.UnitTesting.TagHelpers.FromFramework;
 using System.ComponentModel;
 using System.Linq.Expressions;
@@ -48,6 +49,17 @@ public abstract class LoggingTagHelperTest : BaseTagHelperTest
     protected LoggingTagHelperTest(ITestOutputHelper output)
     {
         Output = output;
+    }
+
+    public void PrettifyHtmlOutput(string html)
+    {
+        var parser = new HtmlParser();
+        var wrapper = parser.ParseDocument("<html><body></body></html>");
+        var doc = parser.ParseFragment(html, wrapper.Body!);
+
+        var writer = new StringWriter();
+        doc.ToHtml(writer, new PrettyMarkupFormatter(){Indentation = "  ", NewLine = "\n"});
+        Output.WriteLine(writer.ToString());
     }
 
     /// <summary>
