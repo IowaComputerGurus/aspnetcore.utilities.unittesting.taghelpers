@@ -25,6 +25,31 @@ public abstract class BaseTagHelperTest
         .PrettyPrintHtml(action);
 
     /// <summary>
+    ///     Verifies a fragment of an HTML document
+    /// </summary>
+    /// <param name="htmlFragment">The HTML fragment</param>
+    /// <param name="prettify">Should the fragment be prettified first? Defaults to true.</param>
+    /// <returns>A <see cref="SettingsTask"/> to await</returns>
+    public virtual SettingsTask VerifyHtmlFragment(string htmlFragment, bool prettify = true)
+    {
+        var verifyFragment = htmlFragment;
+
+        if (prettify)
+        {
+            var parser = new HtmlParser();
+            var wrapper = parser.ParseDocument("<html><body></body></html>");
+            var doc = parser.ParseFragment(htmlFragment, wrapper.Body!);
+
+            var writer = new StringWriter();
+            doc.ToHtml(writer, new PrettyMarkupFormatter() { Indentation = "  ", NewLine = "\n" });
+            verifyFragment = writer.ToString();
+        }
+
+        return Verify(verifyFragment)
+            .UseExtension("html");
+    }
+
+    /// <summary>
     ///     Verifies the output of a tag helper
     /// </summary>
     /// <param name="output">The output of a tag helper</param>
@@ -51,11 +76,15 @@ public abstract class LoggingTagHelperTest : BaseTagHelperTest
         Output = output;
     }
 
-    public void PrettifyHtmlOutput(string html)
+    /// <summary>
+    /// Prettifies an HTML fragment and writes it to the <see cref="ITestOutputHelper"/>
+    /// </summary>
+    /// <param name="htmlFragment">The HTML fragment to output</param>
+    public void OutputPrettyHtmlFragment(string htmlFragment)
     {
         var parser = new HtmlParser();
         var wrapper = parser.ParseDocument("<html><body></body></html>");
-        var doc = parser.ParseFragment(html, wrapper.Body!);
+        var doc = parser.ParseFragment(htmlFragment, wrapper.Body!);
 
         var writer = new StringWriter();
         doc.ToHtml(writer, new PrettyMarkupFormatter(){Indentation = "  ", NewLine = "\n"});
