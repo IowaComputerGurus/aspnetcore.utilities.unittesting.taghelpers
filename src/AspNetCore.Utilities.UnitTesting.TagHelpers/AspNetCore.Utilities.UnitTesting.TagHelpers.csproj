@@ -29,7 +29,7 @@
 		<Description>Helper methods and utilities to make unit testing tag helpers easier</Description>
 		<Copyright>Copyright 2022, IowaComputerGurus, Subject to the MIT License</Copyright>
 		<PackageProjectUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.unittesting.taghelpers</PackageProjectUrl>
-		<PackageTags>aspnetcore;utility;bootstrap;ui</PackageTags>
+		<PackageTags>aspnetcore;utility;taghelper</PackageTags>
 		<RepositoryUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.unittesting.taghelpers</RepositoryUrl>
 		<Authors>MitchelSellers;IowaComputerGurus</Authors>
 		<Owners>IowaComputerGurus</Owners>

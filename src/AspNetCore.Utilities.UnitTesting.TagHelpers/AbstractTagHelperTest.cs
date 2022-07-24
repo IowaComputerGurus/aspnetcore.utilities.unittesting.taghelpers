@@ -3,7 +3,6 @@ using AngleSharp.Dom;
 using AngleSharp.Html;
 using AngleSharp.Html.Parser;
 using ICG.AspNetCore.Utilities.UnitTesting.TagHelpers.FromFramework;
-using System.ComponentModel;
 using System.Linq.Expressions;
 
 namespace ICG.AspNetCore.Utilities.UnitTesting.TagHelpers;
@@ -19,10 +18,12 @@ public abstract class BaseTagHelperTest
     /// <param name="output">The output of a tag helper</param>
     /// <param name="action">A callback containing the <see cref="INodeList"/> from AngleSharp's parsing of the generated Html. Can be null</param>
     /// <returns>A <see cref="SettingsTask"/> to await</returns>
-    public virtual SettingsTask VerifyTagHelper(TagHelperOutput output, Action<INodeList>? action) => Verify(output.Render())
-        .UseExtension("html")
-        .ScrubEmptyLines()
-        .PrettyPrintHtml(action);
+    public virtual SettingsTask VerifyTagHelper(TagHelperOutput output, Action<INodeList>? action) 
+        => 
+            Verify(output.Render())
+            .UseExtension("html")
+            .ScrubEmptyLines()
+            .PrettyPrintHtml(action);
 
     /// <summary>
     ///     Verifies a fragment of an HTML document

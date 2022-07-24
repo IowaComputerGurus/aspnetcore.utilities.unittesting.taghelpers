@@ -1,0 +1,34 @@
+name: CI Build
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+  workflow_dispatch:
+
+jobs:
+  code-quality:
+    runs-on: windows-latest
+    name: Build and Analyze
+    env:
+      solution-path: './src/AspNetCore.Utilities.UnitTesting.TagHelpers.sln'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          
+      - name: Install GitVersion
+        run: dotnet tool install --global GitVersion.Tool
+
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.7
+        with:
+          useConfigFile: true 
+
+      - name: Restore Packages
+        run: dotnet restore "${{ env.solution-path }}"
+      - name: Build
+        run: dotnet build "${{ env.solution-path }}" --no-restore --configuration Release -p:version=${{ steps.gitversion.outputs.majorMinorPatch }}
+    

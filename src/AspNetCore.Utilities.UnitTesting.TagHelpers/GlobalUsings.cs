@@ -13,6 +13,5 @@ global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;
 global using System.Reflection;
 global using System.Text;
-global using VerifyTests;
 global using VerifyTests.AngleSharp;
 global using Xunit.Abstractions;

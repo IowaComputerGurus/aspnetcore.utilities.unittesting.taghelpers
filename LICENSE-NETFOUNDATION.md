@@ -1,6 +1,12 @@
-MIT License
+The following license applies to all content within the /FromFramework folder of this repository.
 
-Copyright (c) 2022 IowaComputerGurus, Inc.
+Obtained from: https://github.com/dotnet/aspnetcore/blob/v6.0.6/LICENSE.txt
+
+The MIT License (MIT)
+
+Copyright (c) .NET Foundation and Contributors
+
+All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
