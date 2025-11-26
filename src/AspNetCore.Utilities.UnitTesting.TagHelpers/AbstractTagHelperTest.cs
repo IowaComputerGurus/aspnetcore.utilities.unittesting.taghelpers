@@ -20,8 +20,7 @@ public abstract class BaseTagHelperTest
     /// <returns>A <see cref="SettingsTask"/> to await</returns>
     public virtual SettingsTask VerifyTagHelper(TagHelperOutput output, Action<INodeList>? action) 
         => 
-            Verify(output.Render())
-            .UseExtension("html")
+            Verify(output.Render(), "html")
             .ScrubEmptyLines()
             .PrettyPrintHtml(action);
 
@@ -46,8 +45,7 @@ public abstract class BaseTagHelperTest
             verifyFragment = writer.ToString();
         }
 
-        return Verify(verifyFragment)
-            .UseExtension("html");
+        return Verify(verifyFragment, "html");
     }
 
     /// <summary>
